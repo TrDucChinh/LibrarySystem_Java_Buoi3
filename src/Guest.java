@@ -40,18 +40,22 @@ public class Guest extends LibrarySystem {
             System.out.print("Nhập truy vấn: ");
             String query = sc.nextLine();
             System.out.println("Kết quả tìm kiếm: ");
-
+            int count = 1;
+            boolean check = false;
             for (Book book : bookList) {
                 if (book.getTitle().toLowerCase().contains(query.toLowerCase()) ||
                         book.getAuthor().toLowerCase().contains(query.toLowerCase()) ||
                         book.getGenre().toLowerCase().contains(query.toLowerCase()) ||
                         book.getPublishDate().contains(query)) {
-                    System.out.println("Tên Sách: " + book.getTitle() + " | Tác Giả: " + book.getAuthor() +
+                    System.out.println(count +  ". Tên Sách: " + book.getTitle() + " | Tác Giả: " + book.getAuthor() +
                             " | Thể Loại: " + book.getGenre() + " | Ngày Xuất Bản: " + book.getPublishDate());
-                    return;
+                    check = true;
+                    ++count;
                 }
             }
-            System.out.println("Không tìm thấy sách trong thư viện");
+            if (!check){
+                System.out.println("Không tìm thấy sách trong thư viện");
+            }
         }
     }
 
