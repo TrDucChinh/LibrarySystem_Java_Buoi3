@@ -15,6 +15,7 @@ public class Book {
     public String getGenre() {
         return genre;
     }
+
     public String getPublishDate() {
         return publishDate;
     }
@@ -25,6 +26,7 @@ public class Book {
         this.genre = genre;
         this.publishDate = publishDate;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -40,10 +42,18 @@ public class Book {
     public void setPublishDate(String publishDate) {
         this.publishDate = publishDate;
     }
-    public boolean compareInfo(String query){
+
+    public boolean searchInfo(String query) {
         return this.getTitle().toLowerCase().contains(query.toLowerCase()) ||
                 this.getAuthor().toLowerCase().contains(query.toLowerCase()) ||
                 this.getGenre().toLowerCase().contains(query.toLowerCase()) ||
                 this.getPublishDate().contains(query);
+    }
+
+    public boolean compareInfo(String query) {
+        return this.getTitle().toLowerCase().equals(query) ||
+                this.getAuthor().toLowerCase().equals(query) ||
+                this.getGenre().toLowerCase().equals(query) ||
+                this.getPublishDate().toLowerCase().equals(query);
     }
 }
