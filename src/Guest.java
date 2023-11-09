@@ -6,7 +6,9 @@ public class Guest extends LibrarySystem {
     public static String getGuestUserName() {
         return GUEST_USERNAME;
     }
-
+    public void print(){
+        System.out.printf("%-10s%-30s%-30s%-30s%-30s\n", "STT", "Tên Sách", "Tác Giả", "Thể Loại", "Ngày Xuất Bản");
+    }
     public void pressKey(Scanner sc) {
         System.out.println("Ấn Enter để tiếp tục");
         sc.nextLine();
@@ -48,11 +50,11 @@ public class Guest extends LibrarySystem {
             System.out.print("Nhập truy vấn: ");
             String query = sc.nextLine();
             System.out.println("Kết quả tìm kiếm: ");
-            System.out.printf("%-10s%-30s%-30s%-30s%-30s\n", "STT", "Tên Sách", "Tác Giả", "Thể Loại", "Ngày Xuất Bản");
+            this.print();
             int count = 1;
             boolean check = false;
             for (Book book : bookList) {
-                if (book.compareInfo(query)) {
+                if (book.searchInfo(query)) {
                     System.out.printf("%-10d%-30s%-30s%-30s%-30s\n", count, book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
                     check = true;
                     ++count;
@@ -70,7 +72,7 @@ public class Guest extends LibrarySystem {
             System.out.println("Không có cuốn sách trong thư viện");
         } else {
             System.out.println("\nDanh Sách Sách: ");
-            System.out.printf("%-10s%-30s%-30s%-30s%-30s\n", "STT", "Tên Sách", "Tác Giả", "Thể Loại", "Ngày Xuất Bản");
+            this.print();
             int count = 1;
             for (Book book : bookList) {
                 System.out.printf("%-10d%-30s%-30s%-30s%-30s\n", count, book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
