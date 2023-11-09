@@ -11,6 +11,7 @@ public class Admin extends Guest {
     public static String getAdminPassWord() {
         return ADMIN_PASSWORD;
     }
+
     public void adminActions(Scanner sc) {
         while (true) {
             System.out.println("\nAdmin Menu:");
@@ -26,18 +27,23 @@ public class Admin extends Guest {
             switch (choice) {
                 case 1:
                     this.addBook(sc);
+                    super.pressKey(sc);
                     break;
                 case 2:
                     deleteBook(sc);
+                    super.pressKey(sc);
                     break;
                 case 3:
                     updateBook(sc);
+                    super.pressKey(sc);
                     break;
                 case 4:
                     super.searchBook(sc);
+                    super.pressKey(sc);
                     break;
                 case 5:
                     super.displayBookList();
+                    super.pressKey(sc);;
                     break;
                 case 6:
                     System.out.println("Thoát chế độ admin!!");
@@ -130,18 +136,6 @@ public class Admin extends Guest {
                 break;
             default:
                 System.out.println("Lựa chọn không hợp lệ");
-        }
-        for (Book book : bookList){
-            if (book.getTitle().toLowerCase().equals(title)){
-
-                System.out.print("Tác giả: ");
-                book.setAuthor(sc.nextLine());
-                System.out.print("Thể loại: ");
-                book.setGenre(sc.nextLine());
-                System.out.print("Ngày xuất bản: ");
-                book.setPublishDate(sc.nextLine());
-                return;
-            }
         }
         System.out.println("Không tìm thấy sách trong thư viện");
     }

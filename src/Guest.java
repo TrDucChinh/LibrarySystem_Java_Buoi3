@@ -6,6 +6,10 @@ public class Guest extends LibrarySystem {
     public static String getGuestUserName() {
         return GUEST_USERNAME;
     }
+    public void pressKey (Scanner sc){
+        System.out.println("Ấn Enter để tiếp tục");
+        sc.nextLine();
+    }
     public void guestActions(Scanner sc) {
         while (true) {
             System.out.println("\nGuest Menu:");
@@ -19,9 +23,11 @@ public class Guest extends LibrarySystem {
             switch (choice) {
                 case 1:
                     searchBook(sc);
+                    pressKey(sc);
                     break;
                 case 2:
                     displayBookList();
+                    pressKey(sc);
                     break;
                 case 3:
                     System.out.println("Bạn đã thoát khỏi chế độ khách");
@@ -55,13 +61,13 @@ public class Guest extends LibrarySystem {
                 }
             }
             if (!check){
+
                 System.out.println("Không tìm thấy sách trong thư viện");
             }
         }
     }
 
     public void displayBookList() {
-
         if (bookList.isEmpty()) {
             System.out.println("Không có cuốn sách trong thư viện");
         } else {
