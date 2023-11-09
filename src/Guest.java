@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Guest extends LibrarySystem {
     private static final String GUEST_USERNAME = "khach";
 
-    public static String getGuestUsername() {
+    public static String getGuestUserName() {
         return GUEST_USERNAME;
     }
     public void guestActions(Scanner sc) {
@@ -49,6 +49,7 @@ public class Guest extends LibrarySystem {
                         book.getPublishDate().contains(query)) {
                     System.out.println(count +  ". Tên Sách: " + book.getTitle() + " | Tác Giả: " + book.getAuthor() +
                             " | Thể Loại: " + book.getGenre() + " | Ngày Xuất Bản: " + book.getPublishDate());
+                    //System.out.printf("{} {} {} {}\n", book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
                     check = true;
                     ++count;
                 }
@@ -69,6 +70,7 @@ public class Guest extends LibrarySystem {
             for (Book book : bookList) {
                 System.out.println(count + ". Tên sách: " + book.getTitle() + " | Tác Giả: " + book.getAuthor() +
                         " | Thể Loại: " + book.getGenre() + " | Ngày Xuất Bản: " + book.getPublishDate());
+               // System.out.printf("{} {} {} {}\n", book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
                 ++count;
             }
         }

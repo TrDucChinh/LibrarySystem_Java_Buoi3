@@ -4,11 +4,11 @@ public class Admin extends Guest {
     private static final String ADMIN_USERNAME = "admin";
     private static final String ADMIN_PASSWORD = "admin";
 
-    public static String getADMIN_USERNAME() {
+    public static String getAdminUserName() {
         return ADMIN_USERNAME;
     }
 
-    public static String getADMIN_PASSWORD() {
+    public static String getAdminPassWord() {
         return ADMIN_PASSWORD;
     }
     public void adminActions(Scanner sc) {
