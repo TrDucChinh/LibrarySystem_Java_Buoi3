@@ -14,6 +14,13 @@ public class Login {
 
                 Admin admin = new Admin();
                 admin.adminActions(sc);
+            } else {
+                do{
+                    System.out.print("Vui lòng nhập lại Password: ");
+                    passWord = sc.nextLine();
+                } while (!passWord.equals(Admin.getADMIN_PASSWORD()));
+                Admin admin = new Admin();
+                admin.adminActions(sc);
             }
         } else if (userName.equals(Guest.getGuestUsername())) {
             Guest guest = new Guest();
