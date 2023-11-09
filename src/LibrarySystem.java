@@ -8,6 +8,6 @@ public class LibrarySystem {
         System.out.println("Chào mừng đến với hệ thống thư viện của Chính");
         // Đăng nhập
         Login login = new Login();
-
+        //Đến đây là xong rùi :3
     }
 }
