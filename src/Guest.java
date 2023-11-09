@@ -52,10 +52,7 @@ public class Guest extends LibrarySystem {
             int count = 1;
             boolean check = false;
             for (Book book : bookList) {
-                if (book.getTitle().toLowerCase().contains(query.toLowerCase()) ||
-                        book.getAuthor().toLowerCase().contains(query.toLowerCase()) ||
-                        book.getGenre().toLowerCase().contains(query.toLowerCase()) ||
-                        book.getPublishDate().contains(query)) {
+                if (book.compareInfo(query)) {
                     System.out.printf("%-10d%-30s%-30s%-30s%-30s\n", count, book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
                     check = true;
                     ++count;

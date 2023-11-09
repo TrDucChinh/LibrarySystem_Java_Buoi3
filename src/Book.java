@@ -40,4 +40,10 @@ public class Book {
     public void setPublishDate(String publishDate) {
         this.publishDate = publishDate;
     }
+    public boolean compareInfo(String query){
+        return this.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                this.getAuthor().toLowerCase().contains(query.toLowerCase()) ||
+                this.getGenre().toLowerCase().contains(query.toLowerCase()) ||
+                this.getPublishDate().contains(query);
+    }
 }
