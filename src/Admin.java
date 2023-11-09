@@ -73,7 +73,7 @@ public class Admin extends Guest {
         System.out.print("Nhập tên sách muốn xóa: ");
         String title = sc.nextLine();
         for (Book book : bookList){
-            if (book.getTitle().toLowerCase().equals(title)){
+            if (book.compareInfo(title)){
                 bookList.remove(book);
                 System.out.println("Xóa sách thành công!");
                 return;
@@ -96,7 +96,7 @@ public class Admin extends Guest {
         switch (choice){
             case 1:
                 for (Book book : bookList){
-                    if (book.getTitle().toLowerCase().equals(title)){
+                    if (book.compareInfo(title)){
                         System.out.print("Tên sách: ");
                         book.setTitle(sc.nextLine());
                         System.out.println("Cập nhật tên sách thành công!");
@@ -106,7 +106,7 @@ public class Admin extends Guest {
                 break;
             case 2:
                 for (Book book : bookList){
-                    if (book.getTitle().toLowerCase().equals(title)){
+                    if (book.compareInfo(title)){
                         System.out.print("Tên tác giả: ");
                         book.setAuthor(sc.nextLine());
                         System.out.println("Cập nhật tên tác giả thành công!");
@@ -116,7 +116,7 @@ public class Admin extends Guest {
                 break;
             case 3:
                 for (Book book : bookList){
-                    if (book.getTitle().toLowerCase().equals(title)){
+                    if (book.compareInfo(title)){
                         System.out.print("Thể loại: ");
                         book.setGenre(sc.nextLine());
                         System.out.println("Cập nhật thể loại thành công!");
@@ -126,7 +126,7 @@ public class Admin extends Guest {
                 break;
             case 4:
                 for (Book book : bookList){
-                    if (book.getTitle().toLowerCase().equals(title)){
+                    if (book.compareInfo(title)){
                         System.out.print("Ngày xuất bản: ");
                         book.setPublishDate(sc.nextLine());
                         System.out.println("Cập nhật ngày xuất bản thành công!");
