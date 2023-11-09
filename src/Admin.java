@@ -43,7 +43,7 @@ public class Admin extends Guest {
                     break;
                 case 5:
                     super.displayBookList();
-                    super.pressKey(sc);;
+                    super.pressKey(sc);
                     break;
                 case 6:
                     System.out.println("Thoát chế độ admin!!");
