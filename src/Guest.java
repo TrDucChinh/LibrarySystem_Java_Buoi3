@@ -6,10 +6,12 @@ public class Guest extends LibrarySystem {
     public static String getGuestUserName() {
         return GUEST_USERNAME;
     }
-    public void pressKey (Scanner sc){
+
+    public void pressKey(Scanner sc) {
         System.out.println("Ấn Enter để tiếp tục");
         sc.nextLine();
     }
+
     public void guestActions(Scanner sc) {
         while (true) {
             System.out.println("\nGuest Menu:");
@@ -46,6 +48,7 @@ public class Guest extends LibrarySystem {
             System.out.print("Nhập truy vấn: ");
             String query = sc.nextLine();
             System.out.println("Kết quả tìm kiếm: ");
+            System.out.printf("%-30s%-30s%-30s%-30s\n", "Tên Sách", "Tác Giả", "Thể Loại", "Ngày Xuất Bản");
             int count = 1;
             boolean check = false;
             for (Book book : bookList) {
@@ -53,14 +56,12 @@ public class Guest extends LibrarySystem {
                         book.getAuthor().toLowerCase().contains(query.toLowerCase()) ||
                         book.getGenre().toLowerCase().contains(query.toLowerCase()) ||
                         book.getPublishDate().contains(query)) {
-                    System.out.println(count +  ". Tên Sách: " + book.getTitle() + " | Tác Giả: " + book.getAuthor() +
-                            " | Thể Loại: " + book.getGenre() + " | Ngày Xuất Bản: " + book.getPublishDate());
-                    //System.out.printf("{} {} {} {}\n", book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
+                    System.out.printf("%-30s%-30s%-30s%-30s\n", book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
                     check = true;
                     ++count;
                 }
             }
-            if (!check){
+            if (!check) {
 
                 System.out.println("Không tìm thấy sách trong thư viện");
             }
@@ -72,11 +73,10 @@ public class Guest extends LibrarySystem {
             System.out.println("Không có cuốn sách trong thư viện");
         } else {
             System.out.println("\nDanh Sách Sách: ");
+            System.out.printf("%-10s%-30s%-30s%-30s%-30s\n", "STT", "Tên Sách", "Tác Giả", "Thể Loại", "Ngày Xuất Bản");
             int count = 1;
             for (Book book : bookList) {
-                System.out.println(count + ". Tên sách: " + book.getTitle() + " | Tác Giả: " + book.getAuthor() +
-                        " | Thể Loại: " + book.getGenre() + " | Ngày Xuất Bản: " + book.getPublishDate());
-               // System.out.printf("{} {} {} {}\n", book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
+                System.out.printf("%-10d%-30s%-30s%-30s%-30s\n", count, book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
                 ++count;
             }
         }
