@@ -60,6 +60,7 @@ public class Admin extends Guest {
         String publishDate = sc.nextLine();
         Book newBook = new Book(title, author, genre, publishDate);
         bookList.add(newBook);
+        System.out.println("Thêm sách thành công!");
     }
 
     public void deleteBook(Scanner sc) {
@@ -79,10 +80,60 @@ public class Admin extends Guest {
     public void updateBook(Scanner sc) {
         System.out.print("Nhập tên sách muốn cập nhật: ");
         String title = sc.nextLine();
+        System.out.println("\n1. Tên sách");
+        System.out.println("2. Tác Giả");
+        System.out.println("3. Thể Loại");
+        System.out.println("4. Ngày Xuất Bản");
+        System.out.print("Nhập mục cần sửa: ");
+        byte choice = sc.nextByte();
+        sc.nextLine();
+        switch (choice){
+            case 1:
+                for (Book book : bookList){
+                    if (book.getTitle().toLowerCase().equals(title)){
+                        System.out.print("Tên sách: ");
+                        book.setTitle(sc.nextLine());
+                        System.out.println("Cập nhật tên sách thành công!");
+                        return;
+                    }
+                }
+                break;
+            case 2:
+                for (Book book : bookList){
+                    if (book.getTitle().toLowerCase().equals(title)){
+                        System.out.print("Tên tác giả: ");
+                        book.setAuthor(sc.nextLine());
+                        System.out.println("Cập nhật tên tác giả thành công!");
+                        return;
+                    }
+                }
+                break;
+            case 3:
+                for (Book book : bookList){
+                    if (book.getTitle().toLowerCase().equals(title)){
+                        System.out.print("Thể loại: ");
+                        book.setGenre(sc.nextLine());
+                        System.out.println("Cập nhật thể loại thành công!");
+                        return;
+                    }
+                }
+                break;
+            case 4:
+                for (Book book : bookList){
+                    if (book.getTitle().toLowerCase().equals(title)){
+                        System.out.print("Ngày xuất bản: ");
+                        book.setPublishDate(sc.nextLine());
+                        System.out.println("Cập nhật ngày xuất bản thành công!");
+                        return;
+                    }
+                }
+                break;
+            default:
+                System.out.println("Lựa chọn không hợp lệ");
+        }
         for (Book book : bookList){
             if (book.getTitle().toLowerCase().equals(title)){
-                System.out.print("Tên sách: ");
-                book.setTitle(sc.nextLine());
+
                 System.out.print("Tác giả: ");
                 book.setAuthor(sc.nextLine());
                 System.out.print("Thể loại: ");
