@@ -1,4 +1,4 @@
-public class Book {
+public class Book extends LibrarySystem{
     private String title; // Tiêu đề
     private String author; // Tác Giả
     private String genre; // Thể loại
@@ -56,11 +56,21 @@ public class Book {
                 this.getPublishDate().contains(query);
     }
 
-    public boolean compareInfo(String query) {
-        return this.getTitle().toLowerCase().equals(query) ||
-                this.getAuthor().toLowerCase().equals(query) ||
-                this.getGenre().toLowerCase().equals(query) ||
-                this.getPublishDate().toLowerCase().equals(query);
+    public boolean compareTitle(String query) {
+        return this.getTitle().equals(query);
+
+    }
+    public void showBook(int count){
+        this.showInfo(count);
+    }
+    public static boolean existBook(String query) {
+        boolean checkBook = false;
+        for (Book book : bookList) {
+            if (book.compareTitle(query)) {
+                checkBook = true;
+            }
+        }
+        return !checkBook;
     }
     public void showInfo(int count) {
         System.out.printf("%-10d%-15d%-30s%-30s%-30s%-30s\n", count, this.getId(), this.getTitle(), this.getAuthor(), this.getGenre(), this.getPublishDate());
