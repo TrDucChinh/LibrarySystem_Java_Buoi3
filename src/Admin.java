@@ -55,25 +55,38 @@ public class Admin extends Guest {
         }
 
     }
+
     public void addBook(Scanner sc) {
-        System.out.print("Tên sách: ");
-        String title = sc.nextLine();
-        System.out.print("Tác giả: ");
-        String author = sc.nextLine();
-        System.out.print("Thể loại: ");
-        String genre = sc.nextLine();
-        System.out.print("Ngày xuất bản: ");
-        String publishDate = sc.nextLine();
-        Book newBook = new Book(title, author, genre, publishDate);
-        bookList.add(newBook);
-        System.out.println("Thêm sách thành công!");
+        System.out.print("\nNhập số lượng sách muốn thêm: ");
+        int numberOfBook = Integer.parseInt(sc.nextLine());
+        for (int i = 0; i < numberOfBook; ++i) {
+            int id = (int) (Math.random() * 10000 + 1);
+            System.out.print("Tên sách: ");
+            String title = sc.nextLine();
+            System.out.print("Tác giả: ");
+            String author = sc.nextLine();
+            System.out.print("Thể loại: ");
+            String genre = sc.nextLine();
+            System.out.print("Ngày xuất bản: ");
+            String publishDate = sc.nextLine();
+            Book newBook = new Book(id, title, author, genre, publishDate);
+            bookList.add(newBook);
+            System.out.println("Thêm sách thành công!");
+            if (i < numberOfBook - 1) {
+                System.out.println("\nNhập thông tin cuốn sách tiếp theo");
+            } else if (i == numberOfBook - 1){
+                System.out.println("Thêm " + numberOfBook + " thành công!");
+            }
+        }
+
     }
 
+    //Em muốn xóa theo id vì có thể có tên trùng nma chưa biết fix sao
     public void deleteBook(Scanner sc) {
-        System.out.print("Nhập tên sách muốn xóa: ");
+        System.out.print("\nNhập tên sách muốn xóa: ");
         String title = sc.nextLine();
-        for (Book book : bookList){
-            if (book.compareInfo(title)){
+        for (Book book : bookList) {
+            if (book.compareInfo(title)) {
                 bookList.remove(book);
                 System.out.println("Xóa sách thành công!");
                 return;
@@ -83,8 +96,9 @@ public class Admin extends Guest {
 
     }
 
+    //Em muốn update theo id vì có thể có tên trùng nma chưa biết fix sao
     public void updateBook(Scanner sc) {
-        System.out.print("Nhập tên sách muốn cập nhật: ");
+        System.out.print("\nNhập tên sách muốn cập nhật: ");
         String title = sc.nextLine();
         System.out.println("\n1. Tên sách");
         System.out.println("2. Tác Giả");
@@ -93,10 +107,10 @@ public class Admin extends Guest {
         System.out.print("Nhập mục cần sửa: ");
         byte choice = sc.nextByte();
         sc.nextLine();
-        switch (choice){
+        switch (choice) {
             case 1:
-                for (Book book : bookList){
-                    if (book.compareInfo(title)){
+                for (Book book : bookList) {
+                    if (book.compareInfo(title)) {
                         System.out.print("Tên sách: ");
                         book.setTitle(sc.nextLine());
                         System.out.println("Cập nhật tên sách thành công!");
@@ -105,8 +119,8 @@ public class Admin extends Guest {
                 }
                 break;
             case 2:
-                for (Book book : bookList){
-                    if (book.compareInfo(title)){
+                for (Book book : bookList) {
+                    if (book.compareInfo(title)) {
                         System.out.print("Tên tác giả: ");
                         book.setAuthor(sc.nextLine());
                         System.out.println("Cập nhật tên tác giả thành công!");
@@ -115,8 +129,8 @@ public class Admin extends Guest {
                 }
                 break;
             case 3:
-                for (Book book : bookList){
-                    if (book.compareInfo(title)){
+                for (Book book : bookList) {
+                    if (book.compareInfo(title)) {
                         System.out.print("Thể loại: ");
                         book.setGenre(sc.nextLine());
                         System.out.println("Cập nhật thể loại thành công!");
@@ -125,8 +139,8 @@ public class Admin extends Guest {
                 }
                 break;
             case 4:
-                for (Book book : bookList){
-                    if (book.compareInfo(title)){
+                for (Book book : bookList) {
+                    if (book.compareInfo(title)) {
                         System.out.print("Ngày xuất bản: ");
                         book.setPublishDate(sc.nextLine());
                         System.out.println("Cập nhật ngày xuất bản thành công!");
