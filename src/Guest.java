@@ -6,11 +6,13 @@ public class Guest extends LibrarySystem {
     public static String getGuestUserName() {
         return GUEST_USERNAME;
     }
-    public void print(){
-        System.out.printf("%-10s%-30s%-30s%-30s%-30s\n", "STT", "Tên Sách", "Tác Giả", "Thể Loại", "Ngày Xuất Bản");
+
+    public void print() {
+        System.out.printf("%-10s%-15s%-30s%-30s%-30s%-30s\n", "STT", "ID", "Tên Sách", "Tác Giả", "Thể Loại", "Ngày Xuất Bản");
     }
+
     public void pressKey(Scanner sc) {
-        System.out.println("Ấn Enter để tiếp tục");
+        System.out.println("\nẤn Enter để tiếp tục");
         sc.nextLine();
     }
 
@@ -50,19 +52,23 @@ public class Guest extends LibrarySystem {
             System.out.print("Nhập truy vấn: ");
             String query = sc.nextLine();
             System.out.println("Kết quả tìm kiếm: ");
-            this.print();
-            int count = 1;
-            boolean check = false;
+            boolean checkBook = false;
             for (Book book : bookList) {
                 if (book.searchInfo(query)) {
-                    System.out.printf("%-10d%-30s%-30s%-30s%-30s\n", count, book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
-                    check = true;
-                    ++count;
+                    checkBook = true;
                 }
             }
-            if (!check) {
-
+            if (!checkBook) {
                 System.out.println("Không tìm thấy sách trong thư viện");
+            } else {
+                int count = 1;
+                this.print();
+                for (Book book : bookList) {
+                    if (book.searchInfo(query)) {
+                        book.showInfo(count);
+                        ++count;
+                    }
+                }
             }
         }
     }
@@ -75,7 +81,7 @@ public class Guest extends LibrarySystem {
             this.print();
             int count = 1;
             for (Book book : bookList) {
-                System.out.printf("%-10d%-30s%-30s%-30s%-30s\n", count, book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishDate());
+                book.showInfo(count);
                 ++count;
             }
         }
