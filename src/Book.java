@@ -4,6 +4,8 @@ public class Book {
     private String genre; // Thể loại
     private String publishDate; // Ngày xuất bản
 
+    private int id;
+
     public String getTitle() {
         return title;
     }
@@ -20,7 +22,16 @@ public class Book {
         return publishDate;
     }
 
-    public Book(String title, String author, String genre, String publishDate) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Book(int id, String title, String author, String genre, String publishDate) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -55,5 +66,8 @@ public class Book {
                 this.getAuthor().toLowerCase().equals(query) ||
                 this.getGenre().toLowerCase().equals(query) ||
                 this.getPublishDate().toLowerCase().equals(query);
+    }
+    public void showInfo(int count) {
+        System.out.printf("%-10d%-15d%-30s%-30s%-30s%-30s\n", count, this.getId(), this.getTitle(), this.getAuthor(), this.getGenre(), this.getPublishDate());
     }
 }
