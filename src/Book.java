@@ -4,7 +4,7 @@ public class Book {
     private String genre; // Thể loại
     private String publishDate; // Ngày xuất bản
 
-    private int id;
+    private final int id;
 
     public String getTitle() {
         return title;
