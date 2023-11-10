@@ -81,76 +81,102 @@ public class Admin extends Guest {
 
     }
 
-    //Em muốn xóa theo id vì có thể có tên trùng nma chưa biết fix sao
     public void deleteBook(Scanner sc) {
+        super.displayBookList();
         System.out.print("\nNhập tên sách muốn xóa: ");
         String title = sc.nextLine();
-        for (Book book : bookList) {
-            if (book.compareInfo(title)) {
-                bookList.remove(book);
-                System.out.println("Xóa sách thành công!");
-                return;
+        if(Book.existBook(title)){
+            System.out.println("Không tìm thấy sách trong thư viện");
+        } else {
+            Guest.print();
+            int countBook = 1;
+            for (Book book : bookList) {
+                if (book.compareTitle(title)) {
+                    book.showBook(countBook);
+                    ++countBook;
+                }
+            }
+            System.out.print("\nNhập ID sách muốn xóa: ");
+            int id = Integer.parseInt(sc.nextLine());
+            for (Book book : bookList){
+                if (book.getId() == id){
+                    bookList.remove(book);
+                    System.out.println("Xóa sách thành công");
+                    return;
+                }
             }
         }
-        System.out.println("Không tìm thấy sách trong thư viện");
-
     }
 
     //Em muốn update theo id vì có thể có tên trùng nma chưa biết fix sao
     public void updateBook(Scanner sc) {
+        super.displayBookList();
         System.out.print("\nNhập tên sách muốn cập nhật: ");
         String title = sc.nextLine();
-        System.out.println("\n1. Tên sách");
-        System.out.println("2. Tác Giả");
-        System.out.println("3. Thể Loại");
-        System.out.println("4. Ngày Xuất Bản");
-        System.out.print("Nhập mục cần sửa: ");
-        byte choice = sc.nextByte();
-        sc.nextLine();
-        switch (choice) {
-            case 1:
-                for (Book book : bookList) {
-                    if (book.compareInfo(title)) {
-                        System.out.print("Tên sách: ");
-                        book.setTitle(sc.nextLine());
-                        System.out.println("Cập nhật tên sách thành công!");
-                        return;
-                    }
+        if(Book.existBook(title)) {
+            System.out.println("Không tìm thấy sách trong thư viện");
+        } else {
+            Guest.print();
+            int countBook = 1;
+            for (Book book : bookList) {
+                if (book.compareTitle(title)) {
+                    book.showBook(countBook);
+                    ++countBook;
                 }
-                break;
-            case 2:
-                for (Book book : bookList) {
-                    if (book.compareInfo(title)) {
-                        System.out.print("Tên tác giả: ");
-                        book.setAuthor(sc.nextLine());
-                        System.out.println("Cập nhật tên tác giả thành công!");
-                        return;
+            }
+            System.out.print("\nNhập ID sách muốn cập nhật: ");
+            int id = Integer.parseInt(sc.nextLine());
+            System.out.println("\nChọn mục cần sửa: ");
+            System.out.println("1. Tên sách");
+            System.out.println("2. Tác Giả");
+            System.out.println("3. Thể Loại");
+            System.out.println("4. Ngày Xuất Bản");
+            System.out.print("Nhập lựa chọn: ");
+            byte choice = Byte.parseByte(sc.nextLine());
+            switch (choice) {
+                case 1:
+                    for (Book book : bookList) {
+                        if (book.getId() == id) {
+                            System.out.print("Tên sách: ");
+                            book.setTitle(sc.nextLine());
+                            System.out.println("Cập nhật tên sách thành công!");
+                            return;
+                        }
                     }
-                }
-                break;
-            case 3:
-                for (Book book : bookList) {
-                    if (book.compareInfo(title)) {
-                        System.out.print("Thể loại: ");
-                        book.setGenre(sc.nextLine());
-                        System.out.println("Cập nhật thể loại thành công!");
-                        return;
+                    break;
+                case 2:
+                    for (Book book : bookList) {
+                        if (book.getId() == id) {
+                            System.out.print("Tên tác giả: ");
+                            book.setAuthor(sc.nextLine());
+                            System.out.println("Cập nhật tên tác giả thành công!");
+                            return;
+                        }
                     }
-                }
-                break;
-            case 4:
-                for (Book book : bookList) {
-                    if (book.compareInfo(title)) {
-                        System.out.print("Ngày xuất bản: ");
-                        book.setPublishDate(sc.nextLine());
-                        System.out.println("Cập nhật ngày xuất bản thành công!");
-                        return;
+                    break;
+                case 3:
+                    for (Book book : bookList) {
+                        if (book.getId() == id) {
+                            System.out.print("Thể loại: ");
+                            book.setGenre(sc.nextLine());
+                            System.out.println("Cập nhật thể loại thành công!");
+                            return;
+                        }
                     }
-                }
-                break;
-            default:
-                System.out.println("Lựa chọn không hợp lệ");
+                    break;
+                case 4:
+                    for (Book book : bookList) {
+                        if (book.getId() == id) {
+                            System.out.print("Ngày xuất bản: ");
+                            book.setPublishDate(sc.nextLine());
+                            System.out.println("Cập nhật ngày xuất bản thành công!");
+                            return;
+                        }
+                    }
+                    break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ");
+            }
         }
-        System.out.println("Không tìm thấy sách trong thư viện");
     }
 }
