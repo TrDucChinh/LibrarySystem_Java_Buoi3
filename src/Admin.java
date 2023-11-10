@@ -98,14 +98,20 @@ public class Admin extends Guest {
             }
             System.out.print("\nNhập ID sách muốn xóa: ");
             int id = Integer.parseInt(sc.nextLine());
-            for (Book book : bookList){
-                if (book.getId() == id){
-                    bookList.remove(book);
-                    System.out.println("Xóa sách thành công");
-                    return;
-                }
+//            for (Book book : bookList){
+//                if (book.getId() == id){
+//                    bookList.remove(book);
+//                    System.out.println("Xóa sách thành công");
+//                    return;
+//                }
+//            }
+            if(!bookList.removeIf(book -> book.getId() == id)){
+                System.out.println("Không tìm thấy ID");
+            } else {
+                bookList.removeIf(book -> book.getId() == id);
+                System.out.println("Xóa sách thành công");
             }
-            System.out.println("Không tìm thấy ID");
+
         }
     }
 
