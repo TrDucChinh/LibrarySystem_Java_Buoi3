@@ -105,6 +105,7 @@ public class Admin extends Guest {
                     return;
                 }
             }
+            System.out.println("Không tìm thấy ID");
         }
     }
 
@@ -177,6 +178,7 @@ public class Admin extends Guest {
                 default:
                     System.out.println("Lựa chọn không hợp lệ");
             }
+            System.out.println("Không tìm thấy ID");
         }
     }
 }
