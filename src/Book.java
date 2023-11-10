@@ -60,9 +60,9 @@ public class Book extends LibrarySystem{
         return this.getTitle().equals(query);
 
     }
-    public void showBook(int count){
-        this.showInfo(count);
-    }
+//    public void showBook(int count){
+//        this.showInfo(count);
+//    }
     public static boolean existBook(String query) {
         boolean checkBook = false;
         for (Book book : bookList) {
