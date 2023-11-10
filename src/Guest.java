@@ -7,7 +7,7 @@ public class Guest extends LibrarySystem {
         return GUEST_USERNAME;
     }
 
-    public void print() {
+    public static void print() {
         System.out.printf("%-10s%-15s%-30s%-30s%-30s%-30s\n", "STT", "ID", "Tên Sách", "Tác Giả", "Thể Loại", "Ngày Xuất Bản");
     }
 
@@ -62,7 +62,7 @@ public class Guest extends LibrarySystem {
                 System.out.println("Không tìm thấy sách trong thư viện");
             } else {
                 int count = 1;
-                this.print();
+                print();
                 for (Book book : bookList) {
                     if (book.searchInfo(query)) {
                         book.showInfo(count);
@@ -78,7 +78,7 @@ public class Guest extends LibrarySystem {
             System.out.println("Không có cuốn sách trong thư viện");
         } else {
             System.out.println("\nDanh Sách Sách: ");
-            this.print();
+            print();
             int count = 1;
             for (Book book : bookList) {
                 book.showInfo(count);
