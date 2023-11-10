@@ -25,11 +25,6 @@ public class Book {
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Book(int id, String title, String author, String genre, String publishDate) {
         this.id = id;
         this.title = title;
