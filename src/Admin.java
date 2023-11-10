@@ -80,7 +80,7 @@ public class Admin extends Guest {
         }
 
     }
-
+    //Delete theo ID vì có thể trùng tên
     public void deleteBook(Scanner sc) {
         super.displayBookList();
         System.out.print("\nNhập tên sách muốn xóa: ");
@@ -92,7 +92,7 @@ public class Admin extends Guest {
             int countBook = 1;
             for (Book book : bookList) {
                 if (book.compareTitle(title)) {
-                    book.showBook(countBook);
+                    book.showInfo(countBook);
                     ++countBook;
                 }
             }
@@ -115,7 +115,7 @@ public class Admin extends Guest {
         }
     }
 
-    //Em muốn update theo id vì có thể có tên trùng nma chưa biết fix sao
+    //Update theo ID vì có thể trùng tên
     public void updateBook(Scanner sc) {
         super.displayBookList();
         System.out.print("\nNhập tên sách muốn cập nhật: ");
@@ -127,7 +127,7 @@ public class Admin extends Guest {
             int countBook = 1;
             for (Book book : bookList) {
                 if (book.compareTitle(title)) {
-                    book.showBook(countBook);
+                    book.showInfo(countBook);
                     ++countBook;
                 }
             }
